@@ -61,7 +61,7 @@ public class ShakeEventListener implements SensorEventListener {
     /**
      * The last z position.
      */
-    private float lastZ = 0;
+    //private float lastZ = 0;
 
     /**
      * OnShakeListener that is called when shake is detected.
@@ -88,10 +88,10 @@ public class ShakeEventListener implements SensorEventListener {
         // get sensor data
         float x = se.values[SensorManager.AXIS_X];
         float y = se.values[SensorManager.AXIS_Y];
-        float z = se.values[SensorManager.AXIS_Z];
+        //float z = se.values[SensorManager.AXIS_Z];
 
         // calculate movement
-        float totalMovement = Math.abs(x + y + z - lastX - lastY - lastZ);
+        float totalMovement = Math.abs(x + y - lastX - lastY);
 
         if (totalMovement > MIN_FORCE) {
 
@@ -115,7 +115,7 @@ public class ShakeEventListener implements SensorEventListener {
                 // store last sensor data
                 lastX = x;
                 lastY = y;
-                lastZ = z;
+                //lastZ = z;
 
                 // check how many movements are so far
                 if (mDirectionChangeCount >= MIN_DIRECTION_CHANGE) {
@@ -143,7 +143,7 @@ public class ShakeEventListener implements SensorEventListener {
         mLastDirectionChangeTime = 0;
         lastX = 0;
         lastY = 0;
-        lastZ = 0;
+        //lastZ = 0;
     }
 
     @Override
