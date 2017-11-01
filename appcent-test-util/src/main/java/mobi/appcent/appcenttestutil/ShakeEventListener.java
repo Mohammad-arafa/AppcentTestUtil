@@ -86,9 +86,9 @@ public class ShakeEventListener implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent se) {
         // get sensor data
-        float x = se.values[SensorManager.DATA_X];
-        float y = se.values[SensorManager.DATA_Y];
-        float z = se.values[SensorManager.DATA_Z];
+        float x = se.values[SensorManager.AXIS_X];
+        float y = se.values[SensorManager.AXIS_Y];
+        float z = se.values[SensorManager.AXIS_Z];
 
         // calculate movement
         float totalMovement = Math.abs(x + y + z - lastX - lastY - lastZ);
