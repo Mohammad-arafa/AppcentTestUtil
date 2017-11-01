@@ -30,27 +30,29 @@ public class AppcentTestUtil {
     }
 
     private AppcentTestUtil(Application application, String versionNumber, String prodBaseUrl, String testBaseUrl, AppcentCallback appcentcallback){
-        if (application == null){
-            throw new IllegalArgumentException("valid application is required");
-        }
-        if (!isValidURL(prodBaseUrl)){
-            throw new IllegalArgumentException("valid prodBaseUrl is required");
-        }
-        if (!isValidURL(testBaseUrl)){
-            throw new IllegalArgumentException("valid testBaseUrl is required");
-        }
-        if (appcentcallback == null){
-            throw new IllegalArgumentException("valid appcentcallback is required");
-        }
+        if (BuildConfig.DEBUG_MODE) {
+            if (application == null){
+                throw new IllegalArgumentException("valid application is required");
+            }
+            if (!isValidURL(prodBaseUrl)){
+                throw new IllegalArgumentException("valid prodBaseUrl is required");
+            }
+            if (!isValidURL(testBaseUrl)){
+                throw new IllegalArgumentException("valid testBaseUrl is required");
+            }
+            if (appcentcallback == null){
+                throw new IllegalArgumentException("valid appcentcallback is required");
+            }
 
-        this.application = application;
-        application.registerActivityLifecycleCallbacks(new AppcentTestUtilActivityLifecycleCallbacks());
-        Constants.PROD_URL = prodBaseUrl;
-        Constants.TEST_URL = testBaseUrl;
-        Constants.BASE_URL = testBaseUrl;
-        Constants.appcentCallback = appcentcallback;
-        Constants.VERSION_NUMBER = versionNumber;
-        onShake();
+            this.application = application;
+            application.registerActivityLifecycleCallbacks(new AppcentTestUtilActivityLifecycleCallbacks());
+            Constants.PROD_URL = prodBaseUrl;
+            Constants.TEST_URL = testBaseUrl;
+            Constants.BASE_URL = testBaseUrl;
+            Constants.appcentCallback = appcentcallback;
+            Constants.VERSION_NUMBER = versionNumber;
+            onShake();
+        }
     }
 
     private void onShake(){
@@ -130,6 +132,11 @@ public class AppcentTestUtil {
         }
         @Override
         public void onActivityDestroyed(Activity activity) {
+            if (BuildConfig.DEBUG_MODE) {
+                if(mSensorManager != null){
+                    mSensorManager.unregisterListener(mSensorListener); // For changing the base URL on the run time
+                }
+            }
         }
     }
 }

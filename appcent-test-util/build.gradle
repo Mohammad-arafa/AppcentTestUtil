@@ -13,7 +13,12 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
+
     buildTypes {
+        debug {
+            buildConfigField "Boolean", "DEBUG_MODE", "true"
+            buildConfigField 'String', 'GOOGLE_PLAY', "\"https://play.google.com/store/apps/details?id=appcent.mobi.waterboyandroid\""
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
