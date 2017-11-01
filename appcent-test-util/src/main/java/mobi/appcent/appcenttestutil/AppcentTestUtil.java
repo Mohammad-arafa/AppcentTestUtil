@@ -130,9 +130,7 @@ public class AppcentTestUtil {
         }
         @Override
         public void onActivityDestroyed(Activity activity) {
-            if(mSensorManager != null){
-                mSensorManager.unregisterListener(mSensorListener); // For changing the base URL on the run time
-            }
+            
         }
     }
 }
