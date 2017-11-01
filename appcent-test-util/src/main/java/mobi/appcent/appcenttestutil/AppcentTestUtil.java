@@ -49,6 +49,7 @@ public class AppcentTestUtil {
         Constants.TEST_URL = testBaseUrl;
         Constants.BASE_URL = testBaseUrl;
         Constants.appcentCallback = appcentcallback;
+        onShake();
     }
 
     private void onShake(){
