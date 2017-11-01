@@ -22,14 +22,14 @@ public class AppcentTestUtil {
     private Application application;
     private  Activity topActivity;
 
-    public static AppcentTestUtil getInstance(Application application, String prodBaseUrl, String testBaseUrl, AppcentCallback appcentcallback) {
+    public static AppcentTestUtil getInstance(Application application,String versionNumber, String prodBaseUrl, String testBaseUrl, AppcentCallback appcentcallback) {
         if (instance == null){
-            instance = new AppcentTestUtil(application, prodBaseUrl, testBaseUrl, appcentcallback);
+            instance = new AppcentTestUtil(application, versionNumber, prodBaseUrl, testBaseUrl, appcentcallback);
         }
         return instance;
     }
 
-    private AppcentTestUtil(Application application, String prodBaseUrl, String testBaseUrl, AppcentCallback appcentcallback){
+    private AppcentTestUtil(Application application, String versionNumber, String prodBaseUrl, String testBaseUrl, AppcentCallback appcentcallback){
         if (application == null){
             throw new IllegalArgumentException("valid application is required");
         }
@@ -49,6 +49,7 @@ public class AppcentTestUtil {
         Constants.TEST_URL = testBaseUrl;
         Constants.BASE_URL = testBaseUrl;
         Constants.appcentCallback = appcentcallback;
+        Constants.VERSION_NUMBER = versionNumber;
         onShake();
     }
 

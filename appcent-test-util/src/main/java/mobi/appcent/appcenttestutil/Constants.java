@@ -9,5 +9,6 @@ public class Constants {
     public static  String PROD_URL = "";
     public static  String TEST_URL = "";
     public static  String BASE_URL = "";
+    public static  String VERSION_NUMBER;
     public static  AppcentCallback appcentCallback;
 }

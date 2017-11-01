@@ -30,7 +30,7 @@ public class AppcentDevelopmentPopup implements View.OnClickListener {
         LinearLayout llDoneTasks = (LinearLayout) dialogView.findViewById(R.id.llDoneTasks);
         TextView tvBaseUrl = (TextView) dialogView.findViewById(R.id.tvBaseUrl);
 
-        tvVersion.setText(BuildConfig.VERSION_NAME);
+        tvVersion.setText(Constants.VERSION_NUMBER);
         tvBaseUrl.setText("Base URL : " + Constants.BASE_URL);
         llTestURL.setOnClickListener(this);
         llProdURL.setOnClickListener(this);
